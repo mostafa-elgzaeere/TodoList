@@ -1,0 +1,35 @@
+body{
+    box-sizing: border-box;
+    margin: 0px;
+    overflow-x: hidden;
+    background:url("./background3.jpg");
+    background-position: center;
+    background-repeat:no-repeat;
+    background-size: cover;
+}
+div h2{
+    color: black;
+}
+ul{
+    list-style-type: none;
+}
+ul li{
+    display: flex;
+    justify-content: space-between;
+}
+.mode{
+    background: url("./588c4ba75cbd6dd9fe3c5bfafaaccdea.jpg");
+    color: white;
+}
+div h3{
+    color: black;
+}
+
+#convert:hover{
+    transform: rotate(180deg);
+    transition: 1s all ease-in-out;
+
+}
+.first{
+    height: 120px;
+}

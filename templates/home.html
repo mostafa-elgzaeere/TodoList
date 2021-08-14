@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static '../static/style.css' %}>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+    <title>TODO LIST</title>
+</head>
+<body>
+<div class="btn btn-dark  mt-5 ml-5  rounded-circle" id="convert"><i class= "fas fa-2x fa-exchange-alt"></i></div>
+    <div class="container text-center  first" >
+        <h2 id="title">Let's Do SomeThing ......</h2>
+    </div>
+    <div>
+
+    <div class="container text-center mt-5">
+        <form method="post" action="{% url 'add_todo' %}">  
+             {% csrf_token %}
+            <div class="form-group d-flex">
+              <input type="text" name="title" required id="title" class="form-control" placeholder="What do you want to do ..... " aria-describedby="helpId">
+              <input type="submit" value="Add To List" class="btn btn-dark ml-1">
+            </div>
+        </form>
+    </div>
+    </div>
+
+    <div class="container jumbotron">
+        <ul>
+        {% if todos %}  
+         {% for i in todos  %}
+         <li>
+            <h3>{{i.name}}</h3> 
+            <div class="d-block">
+             <a href="{% url 'delete_todo' i.id %}"><i class="fas fa-2x fa-check-circle"></i></a>
+             <p class="text-muted">created at: {{i.created_at}}</p>
+             </div>
+         </li>
+            <br>
+              <hr>
+              {% endfor %}
+
+        {% else %}
+        <h2>You Haven't Any Tasks To Do ............</h2>
+        {% endif %}
+     
+   
+        </ul>
+    </div>
+
+
+    <script src={% static '../static/typed.min.js' %}></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
+    <script src= {% static '../static/script.js' %}></script>
+</body>
+</html>
